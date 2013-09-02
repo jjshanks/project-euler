@@ -19,24 +19,29 @@ max_chain = 0
 
 for number in xrange(2,1000001):
     k = number
-    steps = 1
-    while number > 1:
-        # use alrady calculated value if found
-        if cache.has_key(k):
-            steps += cache[k] - 1
-            break
-        else:
-            steps += 1
-            if number % 2 == 0:
-                number /= 2
-            else:
-                number = 3 * number + 1
-    
-    # add result to cache
-    cache[k] = steps
+    # track the actul steps in the chain
+    steps = [number]
 
-    if max_chain < steps:
-        max_chain = steps
+    while number > 1:
+        if number % 2 == 0:
+            number /= 2
+        else:
+            number = 3 * number + 1
+
+        steps.append(number)
+
+        # use alrady calculated value if found
+        if cache.has_key(number):
+            break
+   
+    total_steps = len(steps) + cache[number]
+
+    # for each new step add it the cache with its chain length
+    for i in xrange(0, len(steps)):
+        cache[steps[i]] = total_steps - i
+
+    if max_chain < total_steps:
+        max_chain = total_steps
         max_number = k
 
 print max_number
