@@ -26,7 +26,7 @@ while factors < 500:
     factors = 0
     num += step
     step += 1
-    root = math.ceil(math.sqrt(num))
+    root = math.floor(math.sqrt(num))
     # only consider up to the square root
     for d in xrange(1, int(root) + 1):
         # if we find a factor we know there are two divisors

@@ -11,7 +11,7 @@ import math
 
 # Taken from #12
 def sum_divisors(num):
-    root = int(math.ceil(math.sqrt(num)))
+    root = int(math.floor(math.sqrt(num)))
     total = 0
     for d in xrange(1, root + 1):
         if num % d == 0:
