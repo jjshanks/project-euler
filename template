@@ -1,0 +1,11 @@
+# FIXME: problem url
+#
+# FIXME: problem description
+import os, sys, inspect
+cmd_folder = os.path.dirname(os.path.realpath(os.path.abspath(os.path.split(inspect.getfile( inspect.currentframe() ))[0])))
+if cmd_folder not in sys.path:
+    sys.path.insert(0, cmd_folder)
+
+from euler_helpers import *
+
+# FIXME: problem solution
