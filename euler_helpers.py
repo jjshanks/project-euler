@@ -33,3 +33,17 @@ def lex_permut(chars):
                     # step 4
                     return chars[0:k + 1] + chars[-1:k:-1]
     return None
+
+# Simple prime checker
+def is_prime(num):
+    if num < 2:
+        return False
+    if num > 2 and num % 2 == 0:
+        return False
+    if num == 2:
+        return True
+    for n in xrange(3, int(math.ceil(math.sqrt(num)) + 1), 2):
+       if num % n == 0:
+           return False
+    return True
+
